@@ -37,3 +37,6 @@ The Bengali dataset remains the canonical version; the English dataset is a tran
 
 ## Privacy
 Phone-number-like strings and email addresses detected by pattern matching were masked as `<PHONE>` and `<EMAIL>` in this package.
+
+## Citation
+Ashraf, Kahakashan; Arefin, Mohammad Shamsul; Hossain, Hamid (2026), “BADD: A Large-Scale Bengali Dataset for Arrogance Detection”, *Mendeley Data*, V6, doi: [10.17632/fyzy2z8nzx.6](https://doi.org/10.17632/fyzy2z8nzx.6)
