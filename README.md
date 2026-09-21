@@ -2,6 +2,8 @@
 
 This package is the publication-facing BADD release with the canonical Bengali text and an English companion translation.
 
+**Mendeley Data (V6):** [10.17632/fyzy2z8nzx.6](https://doi.org/10.17632/fyzy2z8nzx.6)
+
 ## Recommended files to cite/use
 - `BADD_final_dataset_bengali.csv` — canonical Bengali dataset (**40,427 rows**)
 - `BADD_final_dataset_english.csv` — English companion (**40,427 rows**)
