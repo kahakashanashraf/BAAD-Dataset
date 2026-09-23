@@ -1,12 +1,12 @@
 # Translation QA summary
 
-- Final rows: **40,427**
-- Initial automatically flagged translations reviewed/post-edited: **290**
-- Additional low-coverage translation post-edited: **1**
-- Empty English translations after post-editing: **0**
-- Bengali-script leakage in English translations: **0**
-- Identical Bengali/English strings after post-editing: **0**
-- Extreme character-length ratios (>5 or <0.2): **0**
-- Rows with phone/email pattern masking: **29**
+- Current release rows: **22,427**
+- Automatic QA flagged rows: **197**
+- Reproducible QA sample: **500 rows**
+- Translation model: `facebook/nllb-200-distilled-600M`
+- Source/target: `ben_Beng` → `eng_Latn`
+- Deterministic generation: `num_beams=2`, `do_sample=False`
 
-The post-editing step was **language-model-assisted** and is **not a substitute for independent human translation validation**. The Bengali text is the canonical language version.
+Automatic QA flags include empty output checks, Bengali-script leakage in English output, identical source/target strings, and extreme character-length ratios. A flag is a **screening signal only** and must not be reported as a confirmed translation error without human review.
+
+The Bengali dataset is the canonical language version. The English dataset is a machine-translated companion.
