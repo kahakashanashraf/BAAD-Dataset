@@ -1,4 +1,4 @@
-name: Sync final BADD dataset
+name: Sync current BADD dataset
 
 on:
   push:
@@ -16,25 +16,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download final release package
+      - name: Download current release package
         run: |
           python -m pip install --quiet gdown
-          gdown 1_FPax5agbS_LXMS7d_zRAadM5f5x4ANV -O /tmp/BADD_Mendeley_FINAL_v2_clean.zip
+          gdown 1_FPax5agbS_LXMS7d_zRAadM5f5x4ANV -O /tmp/BADD_GitHub_Current_Release.zip
 
       - name: Verify and extract package
         run: |
           rm -rf /tmp/badd_release
           mkdir -p /tmp/badd_release
-          unzip -q /tmp/BADD_Mendeley_FINAL_v2_clean.zip -d /tmp/badd_release
+          unzip -q /tmp/BADD_GitHub_Current_Release.zip -d /tmp/badd_release
           cd /tmp/badd_release
           sha256sum -c SHA256SUMS.txt
 
-      - name: Replace legacy release files
+      - name: Replace current release files
         run: |
           rm -f "final_labeled_data (1).csv" "test_translated_data.csv" "paper.pdf"
           cp -f /tmp/badd_release/* .
 
-      - name: Commit final release
+      - name: Commit current release
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -42,6 +42,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update final BADD dataset release [skip ci]"
+            git commit -m "Update current BADD dataset release [skip ci]"
             git push
           fi
