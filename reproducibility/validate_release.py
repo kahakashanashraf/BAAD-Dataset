@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the public BADD V7 binary release and optional three-class companion."""
+"""Validate the BANT project release (archived BADD V7 filenames) and three-class companion."""
 from __future__ import annotations
 import argparse, re, unicodedata
 from pathlib import Path
@@ -61,9 +61,10 @@ def main(root: Path) -> None:
             "Non-Arrogant-Toxic": 9183, "Non-Arrogant": 7118, "Arrogant": 6126,
         }
 
-    print("BADD V7 release validation passed.")
+    print("BANT release validation passed (legacy BADD V7 filenames retained).")
     print("Rows: 22,427 | splits: 17,941 / 2,243 / 2,243")
-    print("Labels: 6,126 Arrogant / 16,301 Non-arrogant")
+    print("Three-class labels: 6,126 Arrogant / 9,183 Non-Arrogant-Toxic / 7,118 Non-Arrogant")
+    print("Canonical binary labels: 6,126 Arrogant / 16,301 Non-arrogant")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
