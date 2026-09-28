@@ -1,21 +1,33 @@
-# BADD — Bangla Arrogance Detection Dataset
+# BANT — Bangla Arrogance and Non-Arrogant Toxicity Dataset
 
-BADD is a human-annotated Bangla social-media dataset for arrogance detection. The current canonical release contains **22,427 comments** and is archived as **Mendeley Data Version 7**. Three human annotators reviewed separate copies of the annotation material. No AI/model prediction is used as an annotator or in the human label-consensus procedure.
+**BANT** is a human-annotated Bangla social-media dataset designed for **arrogance detection, non-arrogant toxicity analysis, fine-grained arrogance classification, and multilingual NLP research**. The canonical archived release contains **22,427 comments** and is available as **Mendeley Data Version 7**.
+
+> **Naming note:** The project/repository is now branded **BANT — Bangla Arrogance and Non-Arrogant Toxicity Dataset**. The archived Mendeley Data Version 7 record and existing `BADD_*.csv` filenames retain the earlier **BADD** name for DOI, checksum, and code compatibility. The underlying data and split membership are unchanged.
+
+Three human annotators reviewed separate copies of the annotation material. No AI/model prediction is used as an annotator or in the human label-consensus procedure.
 
 > **Important:** the value `AI` in the `source` column denotes a data-provenance/source category. It does **not** mean an AI system annotated those rows.
 
 ## Current release
 
-- Mendeley Data Version 7 DOI: **10.17632/fyzy2z8nzx.7**
+- **Current project name:** BANT — Bangla Arrogance and Non-Arrogant Toxicity Dataset
+- **Archived Mendeley Data V7 title:** “BADD: A Large-Scale Bengali Dataset for Arrogance Detection”
+- DOI: **10.17632/fyzy2z8nzx.7**
 - Canonical Bengali dataset: **22,427 rows**
 - Train: **17,941**
 - Validation: **2,243**
 - Test: **2,243**
 - Public binary label space: `Arrogant` / `Non-arrogant`
-- Arrogant rows include one of five fine-grained categories.
-- Original human labels: `Arrogant`, `Non-Arrogant-Toxic`, and `Non-Arrogant`.
+- Original human label space: `Arrogant`, `Non-Arrogant-Toxic`, and `Non-Arrogant`
+- Arrogant rows additionally include one of five fine-grained categories.
+
+## Why BANT?
+
+The name emphasizes the distinction that motivates the annotation design: **toxic language is not automatically arrogant**. The dataset therefore supports both the canonical binary arrogance task and an optional three-class task that explicitly separates `Non-Arrogant-Toxic` from ordinary `Non-Arrogant` content.
 
 ## Main files
+
+The existing filenames are intentionally retained for compatibility with Mendeley Data V7 and previously released code:
 
 - `BADD_final_dataset_bengali.csv` — canonical Bengali binary release
 - `BADD_final_dataset_english.csv` — machine-translated English companion
@@ -36,7 +48,7 @@ The GitHub-only `three_class_release/` folder preserves the original majority-vo
 - Non-Arrogant-Toxic: **9,183**
 - Non-Arrogant: **7,118**
 
-The three-class companion is available in Bengali, English, and bilingual forms with matching train/validation/test splits.
+The companion is available in Bengali, English, and bilingual forms with matching train/validation/test splits.
 
 ## Label counts in the canonical binary release
 
@@ -64,7 +76,7 @@ Automatic QA currently flags **197 rows** for manual inspection. These flags are
 
 ## Reproducibility
 
-See `REPRODUCIBILITY.md` and `reproducibility/` for release-integrity checks and a lightweight TF-IDF/logistic-regression sanity benchmark.
+See `REPRODUCIBILITY.md` and `reproducibility/` for release-integrity checks, cross-split similarity auditing, and a lightweight TF-IDF/logistic-regression sanity benchmark.
 
 ## Acknowledgment
 
@@ -72,6 +84,8 @@ We gratefully acknowledge **Md. Golam Mostafa, Assistant Professor, Department o
 
 ## License and citation
 
-Mendeley Data Version 7 is released under **CC BY 4.0**. Cite the archived dataset as:
+Mendeley Data Version 7 is released under **CC BY 4.0**. Because the archived DOI record retains the earlier dataset title, cite that record exactly as deposited:
 
 Ashraf, Kahakashan; Arefin, Mohammad Shamsul; Hossain, Hamid (2026), “BADD: A Large-Scale Bengali Dataset for Arrogance Detection”, Mendeley Data, V7, doi: 10.17632/fyzy2z8nzx.7.
+
+When referring to the current repository/project in prose, use **BANT — Bangla Arrogance and Non-Arrogant Toxicity Dataset**.
