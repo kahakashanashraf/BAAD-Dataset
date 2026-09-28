@@ -1,4 +1,6 @@
-# BADD reproducibility checks
+# BANT reproducibility checks
+
+**BANT** is the current project name: **Bangla Arrogance and Non-Arrogant Toxicity Dataset**. The Mendeley Data Version 7 files and legacy `BADD_*.csv` filenames retain the earlier BADD name for archival and code compatibility.
 
 The Mendeley Data Version 7 files remain the canonical binary release. The GitHub `three_class_release/` directory is an optional companion that preserves the original three-class majority-vote task without altering V7.
 
