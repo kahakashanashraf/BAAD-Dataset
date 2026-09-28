@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproduce simple BADD sanity-check baselines on the fixed splits."""
+"""Reproduce simple BANT sanity-check baselines using the fixed V7-compatible splits."""
 from __future__ import annotations
 import argparse
 from pathlib import Path
