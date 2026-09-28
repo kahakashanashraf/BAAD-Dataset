@@ -1,4 +1,4 @@
-name: Sync current BADD dataset
+name: Sync current BANT dataset
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
           gdown 1_FPax5agbS_LXMS7d_zRAadM5f5x4ANV -O /tmp/BADD_GitHub_Current_Release.zip
           gdown 11vMzTYmYTUROFTlza3kytsp6CBhJ1it7 -O /tmp/BADD_three_class_release.zip
 
-      - name: Verify and extract binary release
+      - name: Verify and extract canonical V7 package
         run: |
           rm -rf /tmp/badd_release
           mkdir -p /tmp/badd_release
@@ -30,7 +30,7 @@ jobs:
           cd /tmp/badd_release
           sha256sum -c SHA256SUMS.txt
 
-      - name: Verify and extract three-class companion
+      - name: Verify and extract three-class companion package
         run: |
           rm -rf /tmp/badd_three_class
           mkdir -p /tmp/badd_three_class
@@ -38,13 +38,27 @@ jobs:
           cd /tmp/badd_three_class
           sha256sum -c SHA256SUMS.txt
 
-      - name: Replace current release files
+      - name: Sync data while preserving BANT repository documentation
         run: |
           rm -f "final_labeled_data (1).csv" "test_translated_data.csv" "paper.pdf"
-          cp -f /tmp/badd_release/* .
-          rm -rf three_class_release
+
+          # Canonical V7 data retain legacy BADD_* filenames for DOI/code compatibility.
+          cp -f /tmp/badd_release/BADD*.csv .
+          cp -f /tmp/badd_release/DATA_DICTIONARY.csv .
+          cp -f /tmp/badd_release/TRANSLATION_METADATA.json .
+          cp -f /tmp/badd_release/TRANSLATION_QA_SUMMARY.md .
+
           mkdir -p three_class_release
-          cp -f /tmp/badd_three_class/* three_class_release/
+          cp -f /tmp/badd_three_class/BADD*.csv three_class_release/
+          cp -f /tmp/badd_three_class/DATA_DICTIONARY.csv three_class_release/
+          cp -f /tmp/badd_three_class/LABEL_DISTRIBUTION.csv three_class_release/
+
+          # Rebuild checksums after preserving repository-authored BANT README/guideline files.
+          sha256sum ANNOTATION_GUIDELINE.md BADD*.csv DATA_DICTIONARY.csv README.md TRANSLATION_METADATA.json TRANSLATION_QA_SUMMARY.md > SHA256SUMS.txt
+          (
+            cd three_class_release
+            sha256sum BADD*.csv DATA_DICTIONARY.csv LABEL_DISTRIBUTION.csv README.md > SHA256SUMS.txt
+          )
 
       - name: Commit current release
         run: |
@@ -54,6 +68,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update BADD binary and three-class releases [skip ci]"
+            git commit -m "Update BANT release data [skip ci]"
             git push
           fi
